@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewHinhAnh"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+    <TextView
+        android:layout_toRightOf="@+id/imageViewHinhAnh"
+        android:id="@+id/textViewTenBaiTap"
+        android:text="Ten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="20px"/>
+    <TextView
+        android:layout_below="@+id/textViewTenBaiTap"
+        android:layout_toRightOf="@+id/imageViewHinhAnh"
+        android:id="@+id/textViewThoiGianYeuCau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="400s"
+        android:textSize="20dp"
+        android:layout_marginTop="65px"
+        android:layout_marginLeft="20px" />
+
+    <TextView
+        android:layout_marginTop="110px"
+        android:id="@+id/textViewTrangThai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_toRightOf="@+id/imageViewHinhAnh"
+        android:text="Hoan Thanh"/>
+</RelativeLayout>
