@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DuongMain"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:textSize="60px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bài tập bóng rổ"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_margin="20px"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bài khởi động"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="55dp"
+        android:padding="10px"
+        android:layout_margin="20px"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="390dp"
+        android:layout_height="146dp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="88dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_gravity="center"
+        android:src="@drawable/exercise"
+        />
+
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="288dp"
+        android:layout_height="94dp"
+        android:layout_gravity="center"
+        android:background="@drawable/radius"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="196dp">
+
+        <ImageButton
+            android:id="@+id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/trans"/>
+
+        <TextView
+            android:id="@+id/timerLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="90px"
+            android:layout_marginLeft="100px"
+            android:text="0" />
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hướng dẫn"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="299dp"
+        android:layout_margin="20px"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="371dp"
+        android:layout_height="83dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="324dp"
+        android:layout_gravity="center"
+        android:layout_margin="20px"/>
+
+    <ListView
+        android:id="@+id/listEx"
+        android:layout_width="match_parent"
+        android:layout_height="322dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="433dp" />
+
+
+</LinearLayout>
