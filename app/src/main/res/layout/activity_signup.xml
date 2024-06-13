@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signup">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Sign up"
+                android:textSize="24sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tên" />
+
+            <EditText
+                android:id="@+id/txt_name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Your name" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/textView72"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ID" />
+
+            <EditText
+                android:id="@+id/txt_id"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Your ID" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/textView732"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Chiều Cao" />
+
+            <EditText
+                android:id="@+id/txt_chieucao"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Your height" /></TableRow>
+
+        <TableRow
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/textView7332"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:text="Cân nặng" />
+
+            <EditText
+                android:id="@+id/txt_cannang"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Your weight" /></TableRow>
+
+        <TableRow
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/textVi3ew7332"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:text="Email" />
+
+            <EditText
+                android:id="@+id/txt_email"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Your Email" /></TableRow>
+
+        <TableRow
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/text43Vi3ew7332"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:text="Password" />
+
+            <EditText
+                android:id="@+id/txt_password"
+                android:layout_width="200dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/text43Vi34rew7332"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:text="Rewrite Password" />
+
+            <EditText
+                android:id="@+id/txt_repassword"
+                android:layout_width="200dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Rewrite Password"
+                android:inputType="textPassword" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"></Button>
+        </TableRow>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
