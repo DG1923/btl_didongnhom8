@@ -2,6 +2,7 @@ package com.example.baitaplonnhom8;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class huanluyencanhan extends AppCompatActivity {
     private vecticalExerciseAdapter vecticalAdapter;
     private List<Exercise> exerciseList;
     private DatabaseHelper databaseHelper;
+    private Cursor cursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,11 +50,40 @@ public class huanluyencanhan extends AppCompatActivity {
 
         // Thêm các bài tập khác vào danh sách
 
-        Cursor cursor = databaseHelper.getBaiTapByMaMH(8);
+        cursor = databaseHelper.getBaiTapByMaMH(9);
         exerciseAdapter = new ExerciseAdapter(this, cursor);
         recyclerView.setAdapter(exerciseAdapter);
-        vecticalAdapter = new vecticalExerciseAdapter(exerciseList);
+
+        cursor = databaseHelper.getBaiTapByMaMH(6);
+        vecticalAdapter = new vecticalExerciseAdapter(this,cursor);
         exerciseRecyclerView.setAdapter(vecticalAdapter);
+
+        btn_giammo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cursor = databaseHelper.getBaiTapByMaMH(6);
+                vecticalAdapter.setCursor(cursor);
+                vecticalAdapter.setContext(huanluyencanhan.this);
+                vecticalAdapter.notifyDataSetChanged();
+
+            }
+        });
+        btn_tangco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cursor = databaseHelper.getBaiTapByMaMH(7);
+                vecticalAdapter.setCursor(cursor);
+                vecticalAdapter.notifyDataSetChanged();
+            }
+        });
+        btn_duytri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cursor = databaseHelper.getBaiTapByMaMH(8);
+                vecticalAdapter.setCursor(cursor);
+                vecticalAdapter.notifyDataSetChanged();
+            }
+        });
 
     }
     public void getWidget(){
