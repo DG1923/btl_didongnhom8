@@ -68,7 +68,7 @@ public class login extends AppCompatActivity {
         else loggedIn = false;
         if (loggedIn) {
             // Successful login, navigate to MainActivity
-            Intent intent = new Intent(login.this, huanluyencanhan.class);
+            Intent intent = new Intent(login.this, MainActivity.class);
             startActivity(intent);
             finish(); // Prevents user from returning to login screen when pressing back
         } else {

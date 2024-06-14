@@ -26,10 +26,10 @@
             android:exported="false" />
 
         <activity
-            android:name=".login"
+            android:name=".ReportActivity"
+            android:label="Report Activity"
             android:exported="false"/>
-            <activity android:name=".ReportActivity"
-                android:label="Report Activity"
+            <activity android:name=".login"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
