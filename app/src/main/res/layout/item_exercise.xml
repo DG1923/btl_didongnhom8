@@ -7,7 +7,7 @@
         android:id="@+id/img"
         android:layout_width="91dp"
         android:layout_height="80dp"
-        android:src="@drawable/a"
+
         />
 
     <TextView

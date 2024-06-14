@@ -100,7 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String createTableBaiTap = "CREATE TABLE " + DB_BAITAP + " (" +
                     DB_BAITAP_MABT + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     DB_BAITAP_TENBT + " TEXT, " +
-                    DB_BAITAP_ANHMINHHOA + " TEXT, " +  // Changed to TEXT to store image path
+                    DB_BAITAP_ANHMINHHOA + " TEXT, " +
                     DB_BAITAP_HUONGDAN + " TEXT, " +
                     DB_BAITAP_THOIGIANYC + " INTEGER, " +
                     DB_BAITAP_THOIGIANTHUCTE + " INTEGER, " +
@@ -164,51 +164,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertMonHoc(db, "Squat", "AnhBaiTap/Running.png");
         insertMonHoc(db, "Bài tập giảm mơ", "AnhBaiTap/GiamMo.png");
         insertMonHoc(db, "Bài tập tăng cơ", "AnhBaiTap/TangCo.png");
+        insertMonHoc(db, "Bài tập duy trì thể trạng", "AnhBaiTap/running.png");
     }
 
     private void insertBaiTapData(SQLiteDatabase db) {
         // Insert provided exercise data
         String[] exercises = {
-                "('Cardio', 'AnhBaiTap/Running.png', 'Do cardio exercises. Engage in activities like running, cycling, or swimming to increase heart rate and burn calories.', 45, 0, 'Incomplete', 6)",
-                "('HIIT', 'AnhBaiTap/Running.png', 'Do high-intensity interval training. Alternate between short bursts of intense exercise and recovery periods.', 30, 0, 'Incomplete', 6)",
-                "('Cycling', 'AnhBaiTap/Running.png', 'Go cycling. Ride a bike outdoors or use a stationary bike to improve cardiovascular fitness and burn fat.', 60, 0, 'Incomplete', 6)",
-                "('Jump Rope', 'AnhBaiTap/Running.png', 'Jump rope. Perform continuous jumps, focusing on maintaining a steady rhythm and increasing intensity.', 30, 0, 'Incomplete', 6)",
+                "('Cardio', 'AnhBaiTap/Cardio.png', 'Do cardio exercises. Engage in activities like running, cycling, or swimming to increase heart rate and burn calories.', 45, 0, 'Incomplete', 6)",
+                "('HIIT', 'AnhBaiTap/HIIT.png', 'Do high-intensity interval training. Alternate between short bursts of intense exercise and recovery periods.', 30, 0, 'Incomplete', 6)",
+                "('Cycling', 'AnhBaiTap/Cycling.png', 'Go cycling. Ride a bike outdoors or use a stationary bike to improve cardiovascular fitness and burn fat.', 60, 0, 'Incomplete', 6)",
+                "('Jump Rope', 'AnhBaiTap/Jump Rope.png', 'Jump rope. Perform continuous jumps, focusing on maintaining a steady rhythm and increasing intensity.', 30, 0, 'Incomplete', 6)",
                 "('Running', 'AnhBaiTap/Running.png', 'Go for a run. Maintain a steady pace, aiming to increase distance and speed over time.', 45, 0, 'Incomplete', 6)",
-                "('Swimming', 'AnhBaiTap/Running.png', 'Go swimming. Engage in various strokes to work different muscle groups and improve cardiovascular fitness.', 45, 0, 'Incomplete', 6)",
-                "('Rowing', 'AnhBaiTap/Running.png', 'Use a rowing machine. Perform continuous rowing motions, focusing on full-body engagement and intensity.', 45, 0, 'Incomplete', 6)",
-                "('Stair Climbing', 'AnhBaiTap/Running.png', 'Climb stairs. Use a stair climber or actual stairs to increase heart rate and engage lower body muscles.', 30, 0, 'Incomplete', 6)",
-                "('Dance Workout', 'AnhBaiTap/Running.png', 'Do a dance workout. Follow a dance routine to improve cardiovascular fitness and burn calories.', 45, 0, 'Incomplete', 6)",
-                "('Boxing', 'AnhBaiTap/Running.png', 'Do a boxing workout. Perform punches, jabs, and footwork drills to increase heart rate and burn fat.', 30, 0, 'Incomplete', 6)",
-                "('Circuit Training', 'AnhBaiTap/Running.png', 'Do circuit training. Rotate through various exercises with minimal rest to maintain an elevated heart rate.', 45, 0, 'Incomplete', 6)",
-                "('Kickboxing', 'AnhBaiTap/Running.png', 'Do a kickboxing workout. Perform kicks, punches, and combinations to improve cardiovascular fitness and burn fat.', 45, 0, 'Incomplete', 6)",
-                "('Aerobics', 'AnhBaiTap/Running.png', 'Do an aerobics workout. Follow a choreographed routine to increase heart rate and burn calories.', 45, 0, 'Incomplete', 6)",
-                "('Elliptical Training', 'AnhBaiTap/Running.png', 'Use an elliptical machine. Engage in a low-impact cardiovascular workout to burn calories.', 45, 0, 'Incomplete', 6)",
-                "('Treadmill Workout', 'AnhBaiTap/Running.png', 'Use a treadmill. Alternate between walking, jogging, and running to maintain an elevated heart rate.', 45, 0, 'Incomplete', 6)",
-                "('Step Aerobics', 'AnhBaiTap/Running.png', 'Do step aerobics. Follow a choreographed routine using a step platform to increase intensity and burn calories.', 45, 0, 'Incomplete', 6)",
-                "('Zumba', 'AnhBaiTap/Running.png', 'Do a Zumba workout. Follow a dance-based fitness routine to improve cardiovascular fitness and burn fat.', 45, 0, 'Incomplete', 6)",
-                "('Bodyweight Exercises', 'AnhBaiTap/Running.png', 'Do bodyweight exercises. Perform movements like burpees, squats, and lunges to increase intensity and burn fat.', 30, 0, 'Incomplete', 6)",
-                "('Cool Down', 'AnhBaiTap/Running.png', 'Cool down and stretch after a cardio workout. Perform light stretching to aid in muscle recovery and flexibility.', 20, 0, 'Incomplete', 6)",
-                "('Foam Rolling', 'AnhBaiTap/Running.png', 'Use a foam roller. Roll over major muscle groups to release tension and aid in recovery.', 30, 0, 'Incomplete', 6)",
-                "('Yoga', 'AnhBaiTap/yoga.png', 'Do yoga. Follow a yoga routine to improve flexibility, balance, and mental relaxation.', 45, 0, 'Incomplete', 7)",
-                "('Stretching', 'AnhBaiTap/yoga.png', 'Do stretching exercises. Focus on major muscle groups to enhance range of motion and prevent injuries.', 30, 0, 'Incomplete', 7)",
-                "('Light Jogging', 'AnhBaiTap/yoga.png', 'Go for a light jog. Maintain a slow, steady pace to keep your body active without overexertion.', 30, 0, 'Incomplete', 7)",
-                "('Pilates', 'AnhBaiTap/yoga.png', 'Do Pilates. Follow a routine to improve core strength, flexibility, and overall body control.', 45, 0, 'Incomplete', 7)",
-                "('Walking', 'AnhBaiTap/yoga.png', 'Go for a walk. Maintain a steady pace to keep your body active and improve cardiovascular health.', 30, 0, 'Incomplete', 7)",
-                "('Tai Chi', 'AnhBaiTap/yoga.png', 'Practice Tai Chi. Follow a series of slow, controlled movements to improve balance and mental relaxation.', 45, 0, 'Incomplete', 7)",
-                "('Meditation', 'AnhBaiTap/yoga.png', 'Practice meditation. Focus on breathing and relaxation techniques to improve mental clarity and reduce stress.', 30, 0, 'Incomplete', 7)",
-                "('Balance Training', 'AnhBaiTap/yoga.png', 'Do balance training exercises. Focus on stability and coordination to maintain physical health.', 30, 0, 'Incomplete', 7)",
-                "('Core Exercises', 'AnhBaiTap/yoga.png', 'Do core exercises. Perform movements like planks and crunches to strengthen your core muscles.', 30, 0, 'Incomplete', 7)",
-                "('Breathing Exercises', 'AnhBaiTap/yoga.png', 'Practice breathing exercises. Focus on deep, controlled breaths to improve lung capacity and relaxation.', 30, 0, 'Incomplete', 7)",
-                "('Foam Rolling', 'AnhBaiTap/yoga.png', 'Use a foam roller. Roll over major muscle groups to release tension and aid in recovery.', 30, 0, 'Incomplete', 7)",
-                "('Low-Impact Cardio', 'AnhBaiTap/yoga.png', 'Do low-impact cardio exercises. Engage in activities like cycling or swimming to keep active without strain.', 45, 0, 'Incomplete', 7)",
-                "('Resistance Band Exercises', 'AnhBaiTap/yoga.png', 'Use resistance bands. Perform exercises to strengthen muscles while maintaining low impact.', 30, 0, 'Incomplete', 7)",
-                "('Dance Workout', 'AnhBaiTap/yoga.png', 'Do a dance workout. Follow a light dance routine to keep active and have fun.', 45, 0, 'Incomplete', 7)",
-                "('Outdoor Activities', 'AnhBaiTap/yoga.png', 'Engage in outdoor activities. Enjoy hiking, gardening, or other low-intensity activities.', 60, 0, 'Incomplete', 7)",
-                "('Group Exercise Class', 'AnhBaiTap/yoga.png', 'Join a group exercise class. Participate in a class designed for maintaining fitness and social interaction.', 45, 0, 'Incomplete', 7)",
-                "('Swimming', 'AnhBaiTap/yoga.png', 'Go swimming. Enjoy a low-impact full-body workout in the water.', 45, 0, 'Incomplete', 7)",
-                "('Cycling', 'AnhBaiTap/yoga.png', 'Go cycling. Ride a bike outdoors or use a stationary bike for a low-impact workout.', 45, 0, 'Incomplete', 7)",
-                "('Cool Down', 'AnhBaiTap/yoga.png', 'Cool down and stretch after exercise. Perform light stretching to aid in muscle recovery and flexibility.', 20, 0, 'Incomplete', 7)",
-                "('Mental Training', 'AnhBaiTap/yoga.png', 'Work on mental toughness. Practice focusing techniques and strategies to stay calm and motivated.', 30, 0, 'Incomplete', 7)"
+                "('Swimming', 'AnhBaiTap/Swimming.png', 'Go swimming. Engage in various strokes to work different muscle groups and improve cardiovascular fitness.', 45, 0, 'Incomplete', 6)",
+                "('Rowing', 'AnhBaiTap/Rowing.png', 'Use a rowing machine. Perform continuous rowing motions, focusing on full-body engagement and intensity.', 45, 0, 'Incomplete', 6)",
+                "('Stair Climbing', 'AnhBaiTap/Stair Climbing.png', 'Climb stairs. Use a stair climber or actual stairs to increase heart rate and engage lower body muscles.', 30, 0, 'Incomplete', 6)",
+                "('Bench Press', 'AnhBaiTap/Bench Press.png', 'Do yoga. Follow a yoga routine to improve flexibility, balance, and mental relaxation.', 45, 0, 'Incomplete', 7)",
+                "('Dumbbell Pullover', 'AnhBaiTap/Dumbbell Pullover.png', 'Do stretching exercises. Focus on major muscle groups to enhance range of motion and prevent injuries.', 30, 0, 'Incomplete', 7)",
+                "('Bent Over Barbell Row', 'AnhBaiTap/Bent Over Barbell Row.png', 'Go for a light jog. Maintain a slow, steady pace to keep your body active without overexertion.', 30, 0, 'Incomplete', 7)",
+                "('Pull Up', 'AnhBaiTap/Pull Up.png', 'Do Pilates. Follow a routine to improve core strength, flexibility, and overall body control.', 45, 0, 'Incomplete', 7)",
+                "('Squat ', 'AnhBaiTap/Squat.png', 'Go for a walk. Maintain a steady pace to keep your body active and improve cardiovascular health.', 30, 0, 'Incomplete', 7)",
+                "('Leg Press', 'AnhBaiTap/Leg Press.png', 'Practice Tai Chi. Follow a series of slow, controlled movements to improve balance and mental relaxation.', 45, 0, 'Incomplete', 7)",
+                "('Seated Dumbbell Shoulder Press', 'AnhBaiTap/Seated Dumbbell Shoulder Press.png', 'Practice meditation. Focus on breathing and relaxation techniques to improve mental clarity and reduce stress.', 30, 0, 'Incomplete', 7)",
+                "('Upright Row','AnhBaiTap/Upright Row.png', 'Do balance training exercises. Focus on stability and coordination to maintain physical health.', 30, 0, 'Incomplete', 7)",
+                "('Dip', 'AnhBaiTap/Dip.png', 'Do core exercises. Perform movements like planks and crunches to strengthen your core muscles.', 30, 0, 'Incomplete', 7)",
+                "('Push-ups', 'AnhBaiTap/PushUps.png', 'Perform push-ups to strengthen your chest, shoulders, and triceps. Maintain a straight line from head to heels.', 30, 0, 'Incomplete', 8)",
+                "('Squats', 'AnhBaiTap/Squats.png', 'Do squats to target your lower body muscles, including quads, hamstrings, and glutes. Keep your back straight.', 40, 0, 'Incomplete', 8)",
+                "('Plank', 'AnhBaiTap/Plank.png', 'Hold a plank position to work on your core strength. Ensure your body forms a straight line from head to heels.', 60, 0, 'Incomplete', 8)",
+                "('Lunges', 'AnhBaiTap/Lunges.png', 'Perform lunges to work on your thighs and glutes. Step forward with one leg and lower your hips until both knees are bent.', 35, 0, 'Incomplete', 8)",
+                "('Burpees', 'AnhBaiTap/Burpees.png', 'Do burpees for a full-body workout that increases strength and cardio fitness. Jump, squat, and push-up in one motion.', 50, 0, 'Incomplete', 8)",
+                "('Mountain Climbers', 'AnhBaiTap/MountainClimbers.png', 'Perform mountain climbers to engage your core and improve cardiovascular fitness. Bring knees to chest alternately.', 45, 0, 'Incomplete', 8)",
+                "('Bicycle Crunches', 'AnhBaiTap/BicycleCrunches.png', 'Do bicycle crunches to work on your abs and obliques. Touch elbow to opposite knee while extending the other leg.', 30, 0, 'Incomplete', 8)",
+                "('Leg Raises', 'AnhBaiTap/LegRaises.png', 'Perform leg raises to strengthen your lower abs. Lift your legs off the ground while keeping them straight.', 40, 0, 'Incomplete', 8)",
+                "('Jumping Jacks', 'AnhBaiTap/JumpingJacks.png', 'Do jumping jacks to increase your heart rate and work on your entire body. Jump while spreading your arms and legs.', 20, 0, 'Incomplete', 8)",
+                "('Side Plank', 'AnhBaiTap/SidePlank.png', 'Hold a side plank position to target your obliques and improve core stability. Keep your body in a straight line.', 50, 0, 'Incomplete', 8)",
         };
 
         for (String exercise : exercises) {
@@ -218,6 +206,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL(insertQuery);
         }
 
+    }
+    //Lấy bài tập qua mã môn học
+    public Cursor getBaiTapByMaMH(int MaMH){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * " +
+                "FROM BAITAP " +
+                "JOIN MONHOC ON BAITAP.MAMH = MONHOC.MAMH " +
+                "WHERE BAITAP.MAMH = ? AND BAITAP.TRANGTHAI = 'Incomplete'";
+        return db.rawQuery(query, new String[]{String.valueOf(MaMH)});
     }
     public long signUp(int id, String hoten, float chieucao, float cannang, String email, String matkhau) {
         SQLiteDatabase db = this.getWritableDatabase();

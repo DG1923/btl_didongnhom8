@@ -1,5 +1,6 @@
 package com.example.baitaplonnhom8;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
@@ -47,7 +48,8 @@ public class huanluyencanhan extends AppCompatActivity {
 
         // Thêm các bài tập khác vào danh sách
 
-        exerciseAdapter = new ExerciseAdapter(exerciseList);
+        Cursor cursor = databaseHelper.getBaiTapByMaMH(8);
+        exerciseAdapter = new ExerciseAdapter(this, cursor);
         recyclerView.setAdapter(exerciseAdapter);
         vecticalAdapter = new vecticalExerciseAdapter(exerciseList);
         exerciseRecyclerView.setAdapter(vecticalAdapter);
