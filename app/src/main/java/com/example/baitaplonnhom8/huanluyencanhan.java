@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.baitaplonnhom8.database.DatabaseHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class huanluyencanhan extends AppCompatActivity {
     private ExerciseAdapter exerciseAdapter;
     private vecticalExerciseAdapter vecticalAdapter;
     private List<Exercise> exerciseList;
+    private DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +38,7 @@ public class huanluyencanhan extends AppCompatActivity {
             return insets;
         });
         getWidget();
-
+        databaseHelper = new DatabaseHelper(this);
 
         exerciseList = new ArrayList<>();
         exerciseList.add(new Exercise(R.drawable.a, "Leg exercise", "10 mins", "Bài tập giảm mỡ"));

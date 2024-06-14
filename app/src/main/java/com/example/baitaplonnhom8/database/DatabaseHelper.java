@@ -162,6 +162,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertMonHoc(db, "Plank", "AnhBaiTap/Running.png");
         insertMonHoc(db, "Gập Bụng", "AnhBaiTap/Running.png");
         insertMonHoc(db, "Squat", "AnhBaiTap/Running.png");
+        insertMonHoc(db, "Bài tập giảm mơ", "AnhBaiTap/GiamMo.png");
+        insertMonHoc(db, "Bài tập tăng cơ", "AnhBaiTap/TangCo.png");
     }
 
     private void insertBaiTapData(SQLiteDatabase db) {
