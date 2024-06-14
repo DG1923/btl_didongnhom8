@@ -1,0 +1,162 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:padding="10dp"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|start">
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:layout_marginStart="10dp"
+            android:text="Report"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#F4AA66" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="14dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+
+            android:textColor="#8B8888"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="match_parent"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_notdone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Done"
+
+            android:textColor="#8B8888"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            />
+
+
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/item_work"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            tools:listitem="@layout/job_item"-->
+        <!--            />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_tasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@android:color/transparent"
+            android:nestedScrollingEnabled="false"/>
+
+
+    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp"/>
+
+    <!-- Accomplishment Rate Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Circular Progress Indicator -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/progress_circular"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:indeterminate="false"
+                android:progress="100"
+                android:secondaryProgress="0"
+                android:max="100"
+                android:progressDrawable="@drawable/circular_progress_bar"/>
+
+            <TextView
+                android:id="@+id/tv_percentage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"/>
+        </FrameLayout>
+
+        <!-- Space between progress and text -->
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="match_parent"/>
+
+        <!-- Completion Message -->
+        <TextView
+            android:id="@+id/tv_completion_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Congrats! You have finished 100% of the plan!"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
+</LinearLayout>

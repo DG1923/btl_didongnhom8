@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS BAITAP (
     MAMH INTEGER,
     FOREIGN KEY (MAMH) REFERENCES MONHOC(MAMH)
 );
--- Insert MONHOC data
+
 INSERT INTO MONHOC (TENMH, ANHMH) VALUES ('Bóng chuyền', 'AnhMonHoc/volleyball.png');
 INSERT INTO MONHOC (TENMH, ANHMH) VALUES ('Bóng đá', 'AnhMonHoc/football.png');
 INSERT INTO MONHOC (TENMH, ANHMH) VALUES ('Chạy bền', 'AnhMonHoc/running.png');
@@ -41,7 +41,7 @@ INSERT INTO MONHOC (TENMH, ANHMH) VALUES ('Cầu lông', 'AnhMonHoc/badminton.pn
 INSERT INTO MONHOC (TENMH, ANHMH) VALUES ('Tăng cơ', 'AnhMonHoc/TangCo.png');
 INSERT INTO MONHOC (TENMH, ANHMH) VALUES ('Giảm mỡ', 'AnhMonHoc/GiamMo.png');
 INSERT INTO MONHOC (TENMH, ANHMH) VALUES ('Duy trì thể trạng','AnhMonHoc/GiuDang.png');
--- Bóng chuyền
+
 INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRANGTHAI, MAMH) VALUES
 ('Bump Drill', 'AnhBaiTap/Bump Drill.png', 'Practice bumping the ball. Stand with knees bent, arms extended. Focus on using forearms to direct the ball upwards.', 30, 0, 'Incomplete', 1),
 ('Spike Practice', 'AnhBaiTap/Bump Drill.png', 'Practice spiking the ball. Approach the net, jump, and hit the ball with an open hand, aiming for the opponent’s court.', 30, 0, 'Incomplete', 1),
@@ -64,7 +64,7 @@ INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRA
 ('Endurance Training', 'AnhBaiTap/Bump Drill.png', 'Build endurance. Perform cardiovascular exercises to increase stamina for long matches.', 45, 0, 'Incomplete', 1),
 ('Cool Down', 'AnhBaiTap/Bump Drill.png', 'Cool down and stretch after practice. Perform light stretching to aid in muscle recovery and flexibility.', 20, 0, 'Incomplete', 1);
 
--- Bóng đá
+
 INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRANGTHAI, MAMH) VALUES
 ('Dribbling Drill', 'AnhBaiTap/Footwork Drill.png', 'Practice dribbling. Use cones to set up a course, maneuver the ball with both feet, maintaining control.', 30, 0, 'Incomplete', 2),
 ('Shooting Practice', 'AnhBaiTap/Footwork Drill.png', 'Practice shooting. Aim for different targets in the goal, focusing on accuracy and power.', 30, 0, 'Incomplete', 2),
@@ -87,7 +87,7 @@ INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRA
 ('Agility Drill', 'AnhBaiTap/Footwork Drill.png', 'Improve agility. Perform quick directional changes and ladder drills.', 30, 0, 'Incomplete', 2),
 ('Cool Down', 'AnhBaiTap/Footwork Drill.png', 'Cool down and stretch after practice. Perform light stretching to aid in muscle recovery and flexibility.', 20, 0, 'Incomplete', 2);
 
--- Chạy bền
+
 INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRANGTHAI, MAMH) VALUES
 ('Warm-up Run', 'AnhBaiTap/Warm-up Run.png', 'Do a warm-up run. Start at a slow pace to gradually increase heart rate and loosen muscles.', 30, 0, 'Incomplete', 3),
 ('Long Distance Run', 'AnhBaiTap/Warm-up Run.png', 'Run long distances. Maintain a steady pace, focusing on endurance and proper form.', 60, 0, 'Incomplete', 3),
@@ -110,7 +110,6 @@ INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRA
 ('Track Workout', 'AnhBaiTap/Warm-up Run.png', 'Do a track workout. Perform intervals or repeats on a track to focus on speed and form.', 45, 0, 'Incomplete', 3),
 ('Cool Down', 'AnhBaiTap/Warm-up Run.png', 'Cool down and stretch after running. Perform light stretching to aid in muscle recovery and flexibility.', 20, 0, 'Incomplete', 3);
 
--- Cầu lông
 INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRANGTHAI, MAMH) VALUES
 ('Serve Practice', 'AnhBaiTap/Drop Shot Drill.png', 'Practice serving. Focus on accuracy and consistency, aiming for different areas of the opponent’s court.', 30, 0, 'Incomplete', 4),
 ('Smash Drill', 'AnhBaiTap/Drop Shot Drill.png', 'Practice smashing. Work on timing and power to hit the shuttlecock forcefully downward into the opponent’s court.', 30, 0, 'Incomplete', 4),
@@ -133,7 +132,6 @@ INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRA
 ('Cool Down', 'AnhBaiTap/Drop Shot Drill.png', 'Cool down and stretch after practice. Perform light stretching to aid in muscle recovery and flexibility.', 20, 0, 'Incomplete', 4),
 ('Mental Training', 'AnhBaiTap/Drop Shot Drill.png', 'Work on mental toughness. Practice focusing techniques and strategies to stay calm under pressure.', 30, 0, 'Incomplete', 4);
 
--- Tăng cơ
 INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRANGTHAI, MAMH) VALUES
 ('Push-ups', 'AnhBaiTap/Push-ups.png', 'Do push-ups. Keep your body straight, lower your chest to the ground, and push back up.', 30, 0, 'Incomplete', 5),
 ('Weight Lifting', 'AnhBaiTap/Push-ups.png', 'Lift weights. Focus on major muscle groups with exercises like bench press, deadlift, and squats.', 45, 0, 'Incomplete', 5),
@@ -156,7 +154,6 @@ INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRA
 ('Cool Down', 'AnhBaiTap/Push-ups.png', 'Cool down and stretch after weight lifting. Perform light stretching to aid in muscle recovery and flexibility.', 20, 0, 'Incomplete', 5),
 ('Foam Rolling', 'AnhBaiTap/Push-ups.png', 'Use a foam roller. Roll over major muscle groups to release tension and aid in recovery.', 30, 0, 'Incomplete', 5);
 
--- Giảm mỡ
 INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRANGTHAI, MAMH) VALUES
 ('Cardio', 'AnhBaiTap/Running.png', 'Do cardio exercises. Engage in activities like running, cycling, or swimming to increase heart rate and burn calories.', 45, 0, 'Incomplete', 6),
 ('HIIT', 'AnhBaiTap/Running.png', 'Do high-intensity interval training. Alternate between short bursts of intense exercise and recovery periods.', 30, 0, 'Incomplete', 6),
@@ -179,7 +176,7 @@ INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRA
 ('Cool Down', 'AnhBaiTap/Running.png', 'Cool down and stretch after a cardio workout. Perform light stretching to aid in muscle recovery and flexibility.', 20, 0, 'Incomplete', 6),
 ('Foam Rolling', 'AnhBaiTap/Running.png', 'Use a foam roller. Roll over major muscle groups to release tension and aid in recovery.', 30, 0, 'Incomplete', 6);
 
--- Duy trì thể trạng
+
 INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRANGTHAI, MAMH) VALUES
 ('Yoga', 'AnhBaiTap/yoga.png', 'Do yoga. Follow a yoga routine to improve flexibility, balance, and mental relaxation.', 45, 0, 'Incomplete', 7),
 ('Stretching', 'AnhBaiTap/yoga.png', 'Do stretching exercises. Focus on major muscle groups to enhance range of motion and prevent injuries.', 30, 0, 'Incomplete', 7),
