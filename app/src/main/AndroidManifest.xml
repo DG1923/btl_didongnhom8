@@ -22,14 +22,14 @@
             android:name=".signup"
             android:exported="false" />
         <activity
-            android:label="Report Activity"
-            android:name=".ReportActivity"
+            android:name=".huanluyencanhan"
             android:exported="false" />
 
         <activity
-            android:name=".huanluyencanhan"
+            android:name=".login"
             android:exported="false"/>
-            <activity android:name=".login"
+            <activity android:name=".ReportActivity"
+                android:label="Report Activity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
