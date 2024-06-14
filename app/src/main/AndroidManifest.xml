@@ -22,15 +22,16 @@
             android:name=".signup"
             android:exported="false" />
         <activity
-            android:name=".huanluyencanhan"
+            android:name=".login"
             android:exported="false" />
 
         <activity
-            android:name=".login"
-            android:exported="false"/>
-            <activity android:name=".ReportActivity"
-                android:label="Report Activity"
-                android:exported="true">
+            android:name=".ReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".huanluyencanhan"
+            android:exported="true"
+            android:label="Report Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Home"
             android:exported="false" />
         <activity
             android:name=".DuongMain"

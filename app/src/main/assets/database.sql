@@ -198,3 +198,4 @@ INSERT INTO BAITAP (TENBT, ANHMINHHOA, HUONGDAN, THOIGIANYC, THOIGIANTHUCTE, TRA
 ('Cycling', 'AnhBaiTap/yoga.png', 'Go cycling. Ride a bike outdoors or use a stationary bike for a low-impact workout.', 45, 0, 'Incomplete', 7),
 ('Cool Down', 'AnhBaiTap/yoga.png', 'Cool down and stretch after exercise. Perform light stretching to aid in muscle recovery and flexibility.', 20, 0, 'Incomplete', 7),
 ('Mental Training', 'AnhBaiTap/yoga.png', 'Work on mental toughness. Practice focusing techniques and strategies to stay calm and motivated.', 30, 0, 'Incomplete', 7);
+

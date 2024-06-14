@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.baitaplonnhom8.database.DatabaseHelper;
-import com.example.baitaplonnhom8.database.Models.User;
 import com.example.baitaplonnhom8.database.repository.UserRepository;
 
 public class login extends AppCompatActivity {
@@ -68,7 +67,7 @@ public class login extends AppCompatActivity {
         else loggedIn = false;
         if (loggedIn) {
             // Successful login, navigate to MainActivity
-            Intent intent = new Intent(login.this, MainActivity.class);
+            Intent intent = new Intent(login.this, Home.class);
             startActivity(intent);
             finish(); // Prevents user from returning to login screen when pressing back
         } else {

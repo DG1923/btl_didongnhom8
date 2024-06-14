@@ -165,6 +165,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertMonHoc(db, "Bài tập giảm mơ", "AnhBaiTap/GiamMo.png");
         insertMonHoc(db, "Bài tập tăng cơ", "AnhBaiTap/TangCo.png");
         insertMonHoc(db, "Bài tập duy trì thể trạng", "AnhBaiTap/running.png");
+        insertMonHoc(db, "Fast Warmup", "AnhBaiTap/Fastwarmup.png");
     }
 
     private void insertBaiTapData(SQLiteDatabase db) {
@@ -197,6 +198,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Leg Raises', 'AnhBaiTap/LegRaises.png', 'Perform leg raises to strengthen your lower abs. Lift your legs off the ground while keeping them straight.', 40, 0, 'Incomplete', 8)",
                 "('Jumping Jacks', 'AnhBaiTap/JumpingJacks.png', 'Do jumping jacks to increase your heart rate and work on your entire body. Jump while spreading your arms and legs.', 20, 0, 'Incomplete', 8)",
                 "('Side Plank', 'AnhBaiTap/SidePlank.png', 'Hold a side plank position to target your obliques and improve core stability. Keep your body in a straight line.', 50, 0, 'Incomplete', 8)",
+                "('T-ROTATIONS', 'AnhBaiTap/T-ROTATIONS.png', 'Hướng dẫn thực hiện bài tập T-ROTATIONS -OR- SPIDERMAN LUNGES', 5, 0, 'Incomplete', 9)",
+                "('WALKING KNEE HUGS', 'AnhBaiTap/WALKING KNEE HUGS.png', 'Hướng dẫn thực hiện bài tập SUPINE -OR- WALKING KNEE HUGS', 5, 0, 'Incomplete', 9)",
+                "('STEP JACK -OR- JUMPING JACK', 'AnhBaiTap/stepjack.png', 'Hướng dẫn thực hiện bài tập STEP JACK -OR- JUMPING JACK', 5, 0, 'Incomplete', 9)",
+                "('MARCH OR JOG IN PLACE', 'AnhBaiTap/MARCH.png', 'Hướng dẫn thực hiện bài tập MARCH -OR- JOG IN PLACE', 5 ,0, 'Incomplete', 9)",
+                "('LEG SWINGS', 'AnhBaiTap/LEG SWINGS.png', 'Hướng dẫn thực hiện bài tập LEG SWINGS', 5, 0, 'Incomplete', 9)",
+                "('HIP CIRCLES', 'AnhBaiTap/HIP CIRCLES.png', 'Hướng dẫn thực hiện bài tập HIP CIRCLES', 5, 0, 'Incomplete', 9)",
+                "('ARM CIRCLES', 'AnhBaiTap/ARM CIRCLES.png', 'Hướng dẫn thực hiện bài tập ARM CIRCLES', 5, 0, 'Incomplete', 9)",
         };
 
         for (String exercise : exercises) {
