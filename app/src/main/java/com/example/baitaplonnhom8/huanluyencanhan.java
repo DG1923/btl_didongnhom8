@@ -42,10 +42,6 @@ import java.util.List;
             getWidget();
             databaseHelper = new DatabaseHelper(this);
 
-            exerciseList = new ArrayList<>();
-            exerciseList.add(new Exercise(R.drawable.a, "Leg exercise", "10 mins", "Bài tập giảm mỡ"));
-            exerciseList.add(new Exercise(R.drawable.c, "Push up", "10 mins", "Bài tập giảm mỡ"));
-            exerciseList.add(new Exercise(R.drawable.b, "Pull up", "10 mins", "Bài tập giảm mỡ"));
 
             // Thêm các bài tập khác vào danh sách
 

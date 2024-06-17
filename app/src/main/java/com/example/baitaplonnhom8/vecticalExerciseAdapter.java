@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -88,8 +89,10 @@ public class vecticalExerciseAdapter extends RecyclerView.Adapter<vecticalExerci
             e.printStackTrace();
         }
         holder.itemView.setOnClickListener(v-> {
+            Toast.makeText(context, "Ban dang an vao "+id +" va "+nhom, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(context, DuongMain.class);
-            intent.putExtra("idExCurrentClick",id );
+            intent.putExtra("idBT",id);
+            intent.putExtra("maMH",nhom);
             context.startActivity(intent);
         });
     }

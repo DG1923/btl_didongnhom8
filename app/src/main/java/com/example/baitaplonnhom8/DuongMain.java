@@ -1,6 +1,8 @@
 package com.example.baitaplonnhom8;
 
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -20,16 +22,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baitaplonnhom8.database.DatabaseHelper;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class DuongMain extends AppCompatActivity {
     TextView timer;
     TextView tenBaiTap;
     TextView huongDan;
+    TextView monHoc;
     ImageView image;
     ImageButton play;
     CountDownTimer countDownTimer;
-    long timeLeftSeconds = 100000;
+    long timeLeftSeconds = 100;
     boolean timeRunning;
     RecyclerView lvBaiTap;
     ArrayList<BaiTap> arrayBaiTap;
@@ -48,16 +53,7 @@ public class DuongMain extends AppCompatActivity {
             return insets;
         });
         getWidget();
-        databaseHelper = new DatabaseHelper(this);
-        cursor = databaseHelper.getBaiTapByMaMH(7);
-
-        adapter = new BaiTapAdapter(this,cursor);
-        lvBaiTap.setAdapter(adapter);
-
-
-
-        play.setBackgroundResource(R.drawable.playbutton);
-
+        hienThiDatabase();
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +64,31 @@ public class DuongMain extends AppCompatActivity {
         
     }
 
+    private void hienThiDatabase() {
+        databaseHelper = new DatabaseHelper(this);
+        int getIdBT = getIntent().getIntExtra("idBT",-1);
+        int getMahh = getIntent().getIntExtra("maMH",-1);
+        tenBaiTap.setText("Ma bai tap "+getIdBT);
+        monHoc.setText("Ma ma mon hoc "+getMahh);
+        Exercise currentExercise = databaseHelper.getBaiTapByMaBT(getIdBT);
+        tenBaiTap.setText(currentExercise.getName());
+        huongDan.setText(currentExercise.getDecription());
+        try {
+            InputStream inputStream = getApplicationContext().getAssets().open(currentExercise.getImageResource());
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            this.image.setImageBitmap(bitmap);
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        cursor = databaseHelper.getBaiTapByMaMH(getMahh);
+        adapter = new BaiTapAdapter(this,cursor);
+        lvBaiTap.setAdapter(adapter);
+        play.setBackgroundResource(R.drawable.playbutton);
+    }
+
     private void getWidget() {
+        monHoc = findViewById(R.id.textViewMon);
         tenBaiTap = findViewById(R.id.textViewTenBaiTap);
         huongDan = findViewById(R.id.textViewHuongDan);
         image = findViewById(R.id.imageViewHinhAnh);
