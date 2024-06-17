@@ -16,32 +16,19 @@
             android:name=".doimatkhau"
             android:exported="false" />
         <activity
-            android:name=".information"
-            android:exported="false" />
-        <activity
             android:name=".signup"
             android:exported="false" />
         <activity
+            android:name=".huanluyencanhan"
+            android:exported="false" />
+
+        <activity
             android:name=".login"
-            android:exported="false" />
-
-        <activity
-            android:name=".ReportActivity"
             android:exported="false"/>
-            <activity android:name=".huanluyencanhan"
-                android:label="Report Activity"
-                android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".DuongMain"
+            android:exported="false"/>
+        <activity android:name=".MainActivity"
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DuongMain"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
