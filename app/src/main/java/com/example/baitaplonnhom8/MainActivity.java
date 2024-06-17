@@ -1,23 +1,28 @@
 package com.example.baitaplonnhom8;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-//import androidx.navigation.NavController;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.baitaplonnhom8.database.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn_luyentapcanhan;
-    ListView listview;
+    RecyclerView recyclerView;
+    DatabaseHelper databaseHelper;
+    SubjectAdapter subjectAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +43,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Initialize DatabaseHelper
+        databaseHelper = new DatabaseHelper(this);
 
+        // Get cursor for subjects
+        Cursor cursor = getAllSubjects();
+
+        // Initialize and set up the RecyclerView
+        subjectAdapter = new SubjectAdapter(this, cursor, databaseHelper);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(subjectAdapter);
     }
 
     private void getWidget() {
-        btn_luyentapcanhan = findViewById(R.id.btn_luyentapcanhan);
-        listview = findViewById(R.id.listView);
+        btn_luyentapcanhan = findViewById(R.id.btn_trynow);
+        recyclerView = findViewById(R.id.listview);
     }
+
+    private Cursor getAllSubjects() {
+        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + DatabaseHelper.DB_MONHOC, null);
+    }
+
+    
 }
