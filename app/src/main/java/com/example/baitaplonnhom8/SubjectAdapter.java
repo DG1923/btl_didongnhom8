@@ -3,6 +3,7 @@ package com.example.baitaplonnhom8;
 import static java.lang.System.in;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -75,6 +77,11 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
                     e.printStackTrace();
                 }
             }
+            holder.itemView.setOnClickListener(v-> {
+                Intent intent = new Intent(context, DuongMain.class);
+                intent.putExtra("maMH",maMH);
+                context.startActivity(intent);
+            });
             monHocCursor.close();
         }
     }

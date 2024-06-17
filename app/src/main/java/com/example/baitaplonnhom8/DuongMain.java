@@ -60,6 +60,7 @@ public class DuongMain extends AppCompatActivity {
                 startStop();
             }
         });
+        play.setBackgroundResource(R.drawable.playbutton);
         updateTimer();
         
     }
@@ -68,9 +69,14 @@ public class DuongMain extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         int getIdBT = getIntent().getIntExtra("idBT",-1);
         int getMahh = getIntent().getIntExtra("maMH",-1);
-        tenBaiTap.setText("Ma bai tap "+getIdBT);
-        monHoc.setText("Ma ma mon hoc "+getMahh);
-        Exercise currentExercise = databaseHelper.getBaiTapByMaBT(getIdBT);
+        FillData(getIdBT);
+        cursor = databaseHelper.getBaiTapByMaMH(getMahh);
+        adapter = new BaiTapAdapter(this,cursor);
+        lvBaiTap.setAdapter(adapter);
+    }
+    private void FillData(int getIdBT) {
+        int getMahh = getIntent().getIntExtra("maMH",-1);
+        Exercise currentExercise = databaseHelper.getBaiTapByMaBT(getIdBT,getMahh);
         tenBaiTap.setText(currentExercise.getName());
         huongDan.setText(currentExercise.getDecription());
         try {
@@ -81,10 +87,6 @@ public class DuongMain extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        cursor = databaseHelper.getBaiTapByMaMH(getMahh);
-        adapter = new BaiTapAdapter(this,cursor);
-        lvBaiTap.setAdapter(adapter);
-        play.setBackgroundResource(R.drawable.playbutton);
     }
 
     private void getWidget() {

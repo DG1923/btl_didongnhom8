@@ -158,15 +158,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void insertMonHocData(SQLiteDatabase db) {
         // Sample data for MONHOC table
-        insertMonHoc(db, "Hít Đất", "AnhBaiTap/Running.png");
-        insertMonHoc(db, "Hít Xà", "AnhBaiTap/Running.png");
-        insertMonHoc(db, "Plank", "AnhBaiTap/football.png");
-        insertMonHoc(db, "Gập Bụng", "AnhBaiTap/Running.png");
-        insertMonHoc(db, "Squat", "AnhBaiTap/Running.png");
-        insertMonHoc(db, "Bài tập giảm mơ", "AnhBaiTap/GiamMo.png");
-        insertMonHoc(db, "Bài tập tăng cơ", "AnhBaiTap/TangCo.png");
-        insertMonHoc(db, "Bài tập duy trì thể trạng", "AnhBaiTap/running.png");
-        insertMonHoc(db, "Fast Warmup", "AnhBaiTap/Fastwarmup.png");
+        insertMonHoc(db, "Badminton", "AnhMonHoc/badminton.png");
+        insertMonHoc(db, "Football", "AnhMonHoc/football.png");
+        insertMonHoc(db, "Volleyball", "AnhMonHoc/volleyball.png");
+        insertMonHoc(db, "Tenis", "AnhMonHoc/tenis.png");
+        insertMonHoc(db, "Aerobic", "AnhMonHoc/aerobic.png");
+        insertMonHoc(db, "Bài tập giảm mơ", "AnhMonHoc/GiamMo.png");
+        insertMonHoc(db, "Bài tập tăng cơ", "AnhMonHoc/TangCo.png");
+        insertMonHoc(db, "Bài tập duy trì thể trạng", "AnhMonHoc/running.png");
+        insertMonHoc(db, "Fast Warmup", "AnhMonHoc/fastwarmup.png");
     }
     public String getTenMonHocByMaMH(int maMH){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -231,10 +231,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "WHERE BAITAP.MAMH = ? AND BAITAP.TRANGTHAI = 'Incomplete'";
         return db.rawQuery(query, new String[]{String.valueOf(MaMH)});
     }
-    public Exercise getBaiTapByMaBT(int maBT){
+    public Exercise getBaiTapByMaBT(int maBT,int maMH){
+        String query = "";
+        Cursor cursor = null;
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM BAITAP WHERE BAITAP.MABT = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(maBT)});
+        if(maBT == -1 && maMH != 1){
+            query= query = "SELECT * FROM " + DB_BAITAP + " WHERE " + DB_BAITAP_MAMH + " = ? ORDER BY " + DB_BAITAP_MABT + " ASC LIMIT 1";
+            cursor = db.rawQuery(query, new String[]{String.valueOf(maMH)});
+
+        }else if(maBT !=1){
+            query= "SELECT * FROM BAITAP WHERE BAITAP.MABT = ?";
+            cursor = db.rawQuery(query, new String[]{String.valueOf(maBT)});
+
+        }
 
         Exercise exercise = null;
         if (cursor != null) {
