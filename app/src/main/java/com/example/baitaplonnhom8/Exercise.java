@@ -3,15 +3,33 @@ package com.example.baitaplonnhom8;
 public class Exercise {
     private int imageResource;
     private String name;
-    private String time;
+    private String timeReality;
     private String category;
-
-    public Exercise(int imageResource, String name, String time, String category) {
+    private String timeRequire;
+    public Exercise(int imageResource, String name, String timeRequire, String category) {
         this.imageResource = imageResource;
         this.name = name;
-        this.time = time;
+        this.timeRequire = timeRequire;
         this.category = category;
     }
+
+
+    public String getTimeReality() {
+        return timeReality;
+    }
+
+    public void setTimeReality(String timeReality) {
+        this.timeReality = timeReality;
+    }
+
+    public String getTimeRequire() {
+        return timeRequire;
+    }
+
+    public void setTimeRequire(String timeRequire) {
+        this.timeRequire = timeRequire;
+    }
+
 
     public int getImageResource() {
         return imageResource;
@@ -21,9 +39,6 @@ public class Exercise {
         return name;
     }
 
-    public String getTime() {
-        return time;
-    }
 
     public String getCategory() {
         return category;

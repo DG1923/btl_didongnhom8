@@ -5,14 +5,19 @@ public class BaiTap {
     private String huongDan;
     private int hinhAnh;
     private int thoiGianYeuCau;
+    private int thoiGianThucTe;
     private String trangThai;
 
-    public BaiTap(String tenBaiTap, String huongDan, int hinhAnh, int thoiGianYeuCau, String trangThai) {
+    public BaiTap(String tenBaiTap, String huongDan, int hinhAnh, int thoiGianYeuCau, int thoiGianThucTe, String trangThai) {
         this.tenBaiTap = tenBaiTap;
         this.huongDan = huongDan;
         this.hinhAnh = hinhAnh;
         this.thoiGianYeuCau = thoiGianYeuCau;
+        this.thoiGianThucTe = thoiGianThucTe;
         this.trangThai = trangThai;
+    }
+
+    public BaiTap(String tenBaiTap, int thoiGianYeuCau, String trangThai, int hinhAnh) {
     }
 
     public String getTenBaiTap() {
@@ -45,6 +50,14 @@ public class BaiTap {
 
     public void setThoiGianYeuCau(int thoiGianYeuCau) {
         this.thoiGianYeuCau = thoiGianYeuCau;
+    }
+
+    public int getThoiGianThucTe() {
+        return thoiGianThucTe;
+    }
+
+    public void setThoiGianThucTe(int thoiGianThucTe) {
+        this.thoiGianThucTe = thoiGianThucTe;
     }
 
     public String getTrangThai() {
