@@ -159,7 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Sample data for MONHOC table
         insertMonHoc(db, "Hít Đất", "AnhBaiTap/Running.png");
         insertMonHoc(db, "Hít Xà", "AnhBaiTap/Running.png");
-        insertMonHoc(db, "Plank", "AnhBaiTap/Running.png");
+        insertMonHoc(db, "Plank", "AnhBaiTap/football.png");
         insertMonHoc(db, "Gập Bụng", "AnhBaiTap/Running.png");
         insertMonHoc(db, "Squat", "AnhBaiTap/Running.png");
         insertMonHoc(db, "Bài tập giảm mơ", "AnhBaiTap/GiamMo.png");
@@ -213,7 +213,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     DB_BAITAP_TRANGTHAI + ", " + DB_BAITAP_MAMH + ") VALUES " + exercise + ";";
             db.execSQL(insertQuery);
         }
-
     }
     //Lấy bài tập qua mã môn học
     public Cursor getBaiTapByMaMH(int MaMH){
@@ -333,6 +332,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return subjectName;
     }
-
-
+    public Cursor getMonHocByMaMH(int maMH) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + DB_MONHOC + " WHERE " + DB_MONHOC_MAMH + " = ?", new String[]{String.valueOf(maMH)});
+    }
 }

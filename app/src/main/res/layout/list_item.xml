@@ -6,10 +6,9 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/subjectimage"
+        android:id="@+id/imgsub"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/task_placeholder"
         android:scaleType="centerCrop"/>
 
     <LinearLayout
