@@ -157,15 +157,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void insertMonHocData(SQLiteDatabase db) {
         // Sample data for MONHOC table
-        insertMonHoc(db, "Hít Đất", "AnhBaiTap/Running.png");
-        insertMonHoc(db, "Hít Xà", "AnhBaiTap/Running.png");
-        insertMonHoc(db, "Plank", "AnhBaiTap/football.png");
-        insertMonHoc(db, "Gập Bụng", "AnhBaiTap/Running.png");
-        insertMonHoc(db, "Squat", "AnhBaiTap/Running.png");
-        insertMonHoc(db, "Bài tập giảm mơ", "AnhBaiTap/GiamMo.png");
-        insertMonHoc(db, "Bài tập tăng cơ", "AnhBaiTap/TangCo.png");
-        insertMonHoc(db, "Bài tập duy trì thể trạng", "AnhBaiTap/running.png");
-        insertMonHoc(db, "Fast Warmup", "AnhBaiTap/Fastwarmup.png");
+        insertMonHoc(db, "Cầu lông", "AnhMonHoc/badminton.png");
+        insertMonHoc(db, "Bóng đá", "AnhMonHoc/football.png");
+        insertMonHoc(db, "Bóng chuyền", "AnhMonHoc/volleyball.png");
+        insertMonHoc(db, "Tenis", "AnhMonHoc/tenis.png");
+        insertMonHoc(db, "Aerobic", "AnhMonHoc/aerobic.png");
+        insertMonHoc(db, "Bài tập giảm mỡ", "AnhMonHoc/GiamMo.png");
+        insertMonHoc(db, "Bài tập tăng cơ", "AnhMonHoc/TangCo.png");
+        insertMonHoc(db, "Bài tập duy trì thể trạng", "AnhMonHoc/running.png");
+        insertMonHoc(db, "Fast Warmup", "AnhMonHoc/fastwarmup.png");
     }
 
     private void insertBaiTapData(SQLiteDatabase db) {
