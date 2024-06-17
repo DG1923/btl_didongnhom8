@@ -228,7 +228,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * " +
                 "FROM BAITAP " +
-                "WHERE BAITAP.MAMH = ? AND BAITAP.TRANGTHAI = 'Incomplete'";
+                "WHERE BAITAP.MAMH = ?";
         return db.rawQuery(query, new String[]{String.valueOf(MaMH)});
     }
     public Exercise getBaiTapByMaBT(int maBT,int maMH){

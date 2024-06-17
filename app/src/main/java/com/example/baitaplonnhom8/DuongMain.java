@@ -69,24 +69,37 @@ public class DuongMain extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         int getIdBT = getIntent().getIntExtra("idBT",-1);
         int getMahh = getIntent().getIntExtra("maMH",-1);
-        FillData(getIdBT);
+        tenBaiTap.setText("ma bai tap "+getIdBT);
+        monHoc.setText("Mon hoc "+getMahh);
         cursor = databaseHelper.getBaiTapByMaMH(getMahh);
-        adapter = new BaiTapAdapter(this,cursor);
-        lvBaiTap.setAdapter(adapter);
+        if(cursor.getCount() ==0){
+            tenBaiTap.setText("Hiện tại chưa có bài tập nào trong danh sách !.Hãy quay trở lại bản cập nhật lần sau !");
+        }else{
+            FillData(getIdBT);
+            adapter = new BaiTapAdapter(this,cursor);
+            lvBaiTap.setAdapter(adapter);
+        }
+
     }
     private void FillData(int getIdBT) {
         int getMahh = getIntent().getIntExtra("maMH",-1);
-        Exercise currentExercise = databaseHelper.getBaiTapByMaBT(getIdBT,getMahh);
-        tenBaiTap.setText(currentExercise.getName());
-        huongDan.setText(currentExercise.getDecription());
-        try {
-            InputStream inputStream = getApplicationContext().getAssets().open(currentExercise.getImageResource());
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            this.image.setImageBitmap(bitmap);
-            inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        Exercise currentExercise = null;
+        currentExercise = databaseHelper.getBaiTapByMaBT(getIdBT,getMahh);
+        if(currentExercise!=null){
+            tenBaiTap.setText(currentExercise.getName());
+            huongDan.setText(currentExercise.getDecription());
+            monHoc.setText(currentExercise.getCategory()+"");
+            try {
+                InputStream inputStream = getApplicationContext().getAssets().open(currentExercise.getImageResource());
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                this.image.setImageBitmap(bitmap);
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+
     }
 
     private void getWidget() {

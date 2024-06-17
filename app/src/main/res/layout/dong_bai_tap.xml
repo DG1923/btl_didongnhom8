@@ -5,6 +5,7 @@
 
     <ImageView
         android:id="@+id/imageViewHinhAnh"
+        android:layout_margin="20dp"
         android:layout_width="100dp"
         android:layout_height="100dp"/>
     <TextView

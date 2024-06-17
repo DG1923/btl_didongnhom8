@@ -49,23 +49,33 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
         if (cursor.moveToPosition(position)) {
             int maMH = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_MONHOC_MAMH));
             Cursor monHocCursor = databaseHelper.getMonHocByMaMH(maMH);
+            Cursor baiTapCursor = databaseHelper.getBaiTapByMaMH(maMH);
+            int baiTapCount = baiTapCursor.getCount();
             List<Integer> soluong_hoanthanh = new ArrayList<Integer>();
             if (monHocCursor.moveToFirst()) {
                 String tenMonHoc = monHocCursor.getString(monHocCursor.getColumnIndexOrThrow(DatabaseHelper.DB_MONHOC_TENMH));
                 String anhMonHoc = monHocCursor.getString(monHocCursor.getColumnIndexOrThrow(DatabaseHelper.DB_MONHOC_ANHMH));
-
                 holder.txtSubjectName.setText(tenMonHoc);
-                int taskCount = getTaskCountForMonHoc(maMH);
-                float progress = getProgressForMonHoc(maMH);
-                while (monHocCursor.moveToNext()){
-                    String trangthai = monHocCursor.getString(monHocCursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_TRANGTHAI));
-                    if(trangthai == "Incomplete"){
-                        soluong_hoanthanh.add(1);
+                if(baiTapCursor.moveToFirst()){
+                    while(baiTapCursor.moveToNext()){
+                        String trangThai = baiTapCursor.getString(baiTapCursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_TRANGTHAI));
+                        if(trangThai.equals("Complete")){
+                            soluong_hoanthanh.add(1);
+                        }
                     }
+
+                }
+                if(baiTapCount == 0){
+                    holder.txtProgress.setText("Chưa có bài tập");
+
+                }else{
+                    float progress = (float) soluong_hoanthanh.size() / baiTapCount;
+                    int progressInt = (int) (progress * 100);
+                    holder.txtProgress.setText("Tiến độ: " + progressInt + "%");
+
                 }
 
-                holder.txtTaskCount.setText("Số task: " + cursor.getCount());
-                holder.txtProgress.setText("Tiến độ: " + soluong_hoanthanh.size()/cursor.getCount() + "%");
+                holder.txtTaskCount.setText("Số task: " + baiTapCount);
 
                 // Load image from assets
                 try {
