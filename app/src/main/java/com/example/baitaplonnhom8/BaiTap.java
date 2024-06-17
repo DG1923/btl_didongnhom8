@@ -1,6 +1,7 @@
 package com.example.baitaplonnhom8;
 
 public class BaiTap {
+    private int maBaiTap;
     private String tenBaiTap;
     private String huongDan;
     private int hinhAnh;
@@ -8,7 +9,8 @@ public class BaiTap {
     private int thoiGianThucTe;
     private String trangThai;
 
-    public BaiTap(String tenBaiTap, String huongDan, int hinhAnh, int thoiGianYeuCau, int thoiGianThucTe, String trangThai) {
+    public BaiTap(int maBaiTap, String tenBaiTap, String huongDan, int hinhAnh, int thoiGianYeuCau, int thoiGianThucTe, String trangThai) {
+        this.maBaiTap = maBaiTap;
         this.tenBaiTap = tenBaiTap;
         this.huongDan = huongDan;
         this.hinhAnh = hinhAnh;
@@ -17,7 +19,15 @@ public class BaiTap {
         this.trangThai = trangThai;
     }
 
-    public BaiTap(String tenBaiTap, int thoiGianYeuCau, String trangThai, int hinhAnh) {
+    public BaiTap(int maBaiTap, String tenBaiTap, int thoiGianYeuCau, int thoiGianThucTe, String trangThai, int hinhAnh) {
+    }
+
+    public int getMaBaiTap() {
+        return maBaiTap;
+    }
+
+    public void setMaBaiTap(int maBaiTap) {
+        this.maBaiTap = maBaiTap;
     }
 
     public String getTenBaiTap() {

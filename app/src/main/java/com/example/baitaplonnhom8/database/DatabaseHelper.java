@@ -63,6 +63,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return exists;
     }
 
+    public void updateActualTime(int idBaiTap, int timeReal) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DB_BAITAP_THOIGIANTHUCTE, timeReal); // DB_BAITAP_THOIGIANTHUCTE là tên cột chứa thời gian thực tế
+
+        // Dòng lệnh cập nhật
+        db.update(DB_BAITAP, values, DB_BAITAP_MABT + " = ?", new String[]{String.valueOf(idBaiTap)});
+
+        // Đóng kết nối với cơ sở dữ liệu
+        db.close();
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Create TAIKHOAN table

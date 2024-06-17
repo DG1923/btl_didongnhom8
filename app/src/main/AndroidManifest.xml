@@ -16,6 +16,12 @@
             android:name=".doimatkhau"
             android:exported="false" />
         <activity
+            android:name=".ReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".signup"
             android:exported="false" />
         <activity
@@ -23,11 +29,11 @@
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".login"
             android:exported="false"/>
         <activity android:name=".DuongMain"
             android:exported="false"/>
-        <activity android:name=".login"
+        <activity android:name=".MainActivity"
 
             android:exported="true">
             <intent-filter>

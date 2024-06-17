@@ -49,28 +49,37 @@ public class BaiTapAdapter extends RecyclerView.Adapter<BaiTapAdapter.ViewHolder
 
     private Context context;
     private Cursor cursor;
+    private OnItemClickListener listener;
     @NonNull
     @Override
     public BaiTapAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dong_bai_tap,parent,false);
         return new ViewHolder(view);
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if(!cursor.moveToPosition(position)){
+        if (!cursor.moveToPosition(position)) {
             return;
         }
-        int id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_MABT));
 
-        String nameEx =cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_TENBT));
+        int id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_MABT));
+        String nameEx = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_TENBT));
         String anhminhhoa = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_ANHMINHHOA));
         int time = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_THOIGIANYC));
         String trangThai = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_TRANGTHAI));
 
-
         holder.txtTenBaiTap.setText(nameEx);
         holder.txt_TrangThai.setText(trangThai);
-        holder.txtThoiGianYeuCau.setText(time+" mins");
+        holder.txtThoiGianYeuCau.setText(time + " mins");
 
         try {
             InputStream inputStream = context.getAssets().open(anhminhhoa);
@@ -81,7 +90,14 @@ public class BaiTapAdapter extends RecyclerView.Adapter<BaiTapAdapter.ViewHolder
             e.printStackTrace();
         }
 
+        // Handle item click
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(position);
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
