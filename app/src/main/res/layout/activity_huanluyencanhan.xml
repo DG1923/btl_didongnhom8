@@ -12,16 +12,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TableRow
+        <LinearLayout
+            android:id="@+id/headerLayout"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/txtNameUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello Đỗ Giáp" />
-        </TableRow>
+                android:layout_weight="2"
+                android:text="Hello Đỗ Giáp"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Log out"
+                android:textSize="14sp" />
+        </LinearLayout>
 
         <TableRow
             android:layout_width="match_parent"

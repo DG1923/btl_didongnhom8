@@ -1,5 +1,6 @@
 package com.example.baitaplonnhom8;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,8 @@ import java.util.List;
         private List<Exercise> exerciseList;
         private DatabaseHelper databaseHelper;
         private Cursor cursor;
+
+        private Button btn_logout;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -84,6 +87,16 @@ import java.util.List;
                     vecticalAdapter.notifyDataSetChanged();
                 }
             });
+
+            btn_logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(huanluyencanhan.this,login.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
             // Xử lý sự kiện cho nút bấm chọn chế độ tập luyện
         }
         public void getWidget(){
@@ -92,6 +105,8 @@ import java.util.List;
             btn_duytri = findViewById(R.id.btn_duytri);
             btn_giammo = findViewById(R.id.btn_giammo);
             btn_tangco = findViewById(R.id.btn_tangco);
+            btn_logout = findViewById(R.id.btn_logout);
+    //        listView = findViewById(R.id.fast_warmup);
             txtNameUser = findViewById(R.id.txtNameUser);
             //        listView = findViewById(R.id.fast_warmup);
             recyclerView = findViewById(R.id.fastWarmup);
