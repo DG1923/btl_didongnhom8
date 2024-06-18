@@ -67,10 +67,10 @@ public class login extends AppCompatActivity {
         if (userRepository.login(email, password)) loggedIn = true;
         else loggedIn = false;
         if (loggedIn) {
-//            DatabaseHelper db = new DatabaseHelper(this);
-//            // Successful login, navigate to MainActivity
-//            User user = db.getUserByEmail(email);
-//            phienDangNhapUser.saveUserToPreferences(this,user);
+            DatabaseHelper db = new DatabaseHelper(this);
+            // Successful login, navigate to MainActivity
+            User user = db.getUserByEmail(email);
+            phienDangNhapUser.saveUserToPreferences(this,user);
             Intent intent = new Intent(login.this, MainActivity.class);
 
             startActivity(intent);

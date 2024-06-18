@@ -36,6 +36,12 @@ public class phienDangNhapUser {
         editor.apply();  // Lưu thay đổi
 
     }
+    public static void changePassWord(Context context,String matkhau){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("phienDangNhapUser", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("MATKHAU", matkhau);
+        editor.apply();  // Lưu thay đổi
+    }
     public static User getUserFromPreferences(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences("phienDangNhapUser", Context.MODE_PRIVATE);
         int matk = sharedPreferences.getInt("MATK", 0);

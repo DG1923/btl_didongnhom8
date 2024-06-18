@@ -127,7 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public User getUserByEmail(String email){
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + DB_TAIKHOAN + " WHERE " + DB_TAIKHOAN_MATK + " = ?";
+        String query = "SELECT * FROM " + DB_TAIKHOAN + " WHERE " + DB_TAIKHOAN_EMAIL + " = ?";
         Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(email)});
 
         User user = null;
@@ -210,6 +210,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertMonHoc(db, "Bài tập duy trì thể trạng", "AnhMonHoc/running.png");
         insertMonHoc(db, "Fast Warmup", "AnhMonHoc/fastwarmup.png");
     }
+     public boolean changePassword(int matk, String matkhau){
+         SQLiteDatabase db = this.getWritableDatabase();
+         ContentValues values = new ContentValues();
+         values.put(DB_TAIKHOAN_MATKHAU, matkhau); // cho gía trị mật khẩu mới vào values
+
+         String selection = DB_TAIKHOAN_MATK + " = ?";
+         String[] selectionArgs = { String.valueOf(matk) };
+
+         int count = db.update(
+                 DB_TAIKHOAN, // Tên bảng
+                 values, // Giá trị mới
+                 selection, // Mệnh đề WHERE
+                 selectionArgs); // Giá trị cho mệnh đề WHERE
+         if(count>0)
+             return true;
+         else return false;
+     }
     public String getTenMonHocByMaMH(int maMH){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT "+DB_MONHOC_TENMH+
