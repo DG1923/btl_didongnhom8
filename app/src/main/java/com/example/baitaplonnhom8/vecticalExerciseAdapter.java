@@ -1,6 +1,7 @@
 package com.example.baitaplonnhom8;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,6 +61,7 @@ public class vecticalExerciseAdapter extends RecyclerView.Adapter<vecticalExerci
         if(!cursor.moveToPosition(position)){
             return;
         }
+        int id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_MABT));
         String nameEx =cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_TENBT));
         String anhminhhoa = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_ANHMINHHOA));
         int time = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_THOIGIANYC));
@@ -85,6 +88,13 @@ public class vecticalExerciseAdapter extends RecyclerView.Adapter<vecticalExerci
         } catch (IOException e) {
             e.printStackTrace();
         }
+        holder.itemView.setOnClickListener(v-> {
+            Toast.makeText(context, "Ban dang an vao "+id +" va "+nhom, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, DuongMain.class);
+            intent.putExtra("idBT",id);
+            intent.putExtra("maMH",nhom);
+            context.startActivity(intent);
+        });
     }
 
     @Override

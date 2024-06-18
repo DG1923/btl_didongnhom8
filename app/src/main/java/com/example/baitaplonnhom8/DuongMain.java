@@ -1,9 +1,14 @@
 package com.example.baitaplonnhom8;
 
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,18 +17,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.baitaplonnhom8.database.DatabaseHelper;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class DuongMain extends AppCompatActivity {
     TextView timer;
+    TextView tenBaiTap;
+    TextView huongDan;
+    TextView monHoc;
+    ImageView image;
     ImageButton play;
     CountDownTimer countDownTimer;
-    long timeLeftInMiliseconds = 100000;
+    long timeLeftSeconds = 100;
     boolean timeRunning;
-    ListView lvBaiTap;
+    RecyclerView lvBaiTap;
     ArrayList<BaiTap> arrayBaiTap;
     BaiTapAdapter adapter;
+    private DatabaseHelper databaseHelper;
+    private Cursor cursor;
+    BaiTap currentBaiTap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,29 +52,65 @@ public class DuongMain extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        play = findViewById(R.id.playButton);
-        timer = findViewById(R.id.timerLeft);
-        lvBaiTap = findViewById(R.id.listEx);
-        arrayBaiTap = new ArrayList<>();
-        arrayBaiTap.add(new BaiTap("Khoi dong", "asdlkfjlk", R.drawable.exercise, 120, "Chua hoan thanh"));
-        arrayBaiTap.add(new BaiTap("Khoi dong", "asdlkfjlk", R.drawable.exercise, 120, "Chua hoan thanh"));
-        arrayBaiTap.add(new BaiTap("Khoi dong", "asdlkfjlk", R.drawable.exercise, 120, "Chua hoan thanh"));
-        arrayBaiTap.add(new BaiTap("Khoi dong", "asdlkfjlk", R.drawable.exercise, 120, "Chua hoan thanh"));
-
-
-        adapter = new BaiTapAdapter(this, R.layout.dong_bai_tap, arrayBaiTap);
-        lvBaiTap.setAdapter(adapter);
-
-
-        play.setBackgroundResource(R.drawable.playbutton);
-
+        getWidget();
+        hienThiDatabase();
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startStop();
             }
         });
+        play.setBackgroundResource(R.drawable.playbutton);
         updateTimer();
+        
+    }
+
+    private void hienThiDatabase() {
+        databaseHelper = new DatabaseHelper(this);
+        int getIdBT = getIntent().getIntExtra("idBT",-1);
+        int getMahh = getIntent().getIntExtra("maMH",-1);
+        tenBaiTap.setText("ma bai tap "+getIdBT);
+        monHoc.setText("Mon hoc "+getMahh);
+        cursor = databaseHelper.getBaiTapByMaMH(getMahh);
+        if(cursor.getCount() ==0){
+            tenBaiTap.setText("Hiện tại chưa có bài tập nào trong danh sách !.Hãy quay trở lại bản cập nhật lần sau !");
+        }else{
+            FillData(getIdBT);
+            adapter = new BaiTapAdapter(this,cursor);
+            lvBaiTap.setAdapter(adapter);
+        }
+
+    }
+    private void FillData(int getIdBT) {
+        int getMahh = getIntent().getIntExtra("maMH",-1);
+        Exercise currentExercise = null;
+        currentExercise = databaseHelper.getBaiTapByMaBT(getIdBT,getMahh);
+        if(currentExercise!=null){
+            tenBaiTap.setText(currentExercise.getName());
+            huongDan.setText(currentExercise.getDecription());
+            monHoc.setText(currentExercise.getCategory()+"");
+            try {
+                InputStream inputStream = getApplicationContext().getAssets().open(currentExercise.getImageResource());
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                this.image.setImageBitmap(bitmap);
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
+    private void getWidget() {
+        monHoc = findViewById(R.id.textViewMon);
+        tenBaiTap = findViewById(R.id.textViewTenBaiTap);
+        huongDan = findViewById(R.id.textViewHuongDan);
+        image = findViewById(R.id.imageViewHinhAnh);
+        play = findViewById(R.id.playButton);
+        timer = findViewById(R.id.timerLeft);
+        lvBaiTap = findViewById(R.id.listEx);
+        lvBaiTap.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
     }
 
     public void startStop(){
@@ -67,11 +121,12 @@ public class DuongMain extends AppCompatActivity {
         }
     }
 
+
     public void startTimer(){
-        countDownTimer = new CountDownTimer(timeLeftInMiliseconds, 1000) {
+        countDownTimer = new CountDownTimer(timeLeftSeconds, 1000) {
             @Override
             public void onTick(long l) {
-                timeLeftInMiliseconds = l;
+                timeLeftSeconds = l;
                 updateTimer();
             }
 
@@ -92,8 +147,8 @@ public class DuongMain extends AppCompatActivity {
     }
 
     public void updateTimer(){
-        int minutes = (int) timeLeftInMiliseconds / 60000;
-        int seconds = (int) timeLeftInMiliseconds % 60000 / 1000;
+        int minutes = (int) timeLeftSeconds / 60;
+        int seconds = (int) timeLeftSeconds % 60;
         String timeLeftText;
         timeLeftText = "" + minutes;
         timeLeftText += ":";

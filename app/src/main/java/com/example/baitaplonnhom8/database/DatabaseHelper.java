@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.baitaplonnhom8.Exercise;
 import com.example.baitaplonnhom8.database.Models.Task;
+import com.example.baitaplonnhom8.database.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,7 +125,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DB_TAIKHOAN);
         onCreate(db);
     }
+    public User getUserByEmail(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + DB_TAIKHOAN + " WHERE " + DB_TAIKHOAN_EMAIL + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(email)});
 
+        User user = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            int matk = cursor.getInt(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_MATK));
+            String hoten = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_HOTEN));
+            float chieucao = cursor.getFloat(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_CHIEUCAO));
+            float cannang = cursor.getFloat(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_CANNANG));
+            String matkhau = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_MATKHAU));
+            user = new User(matk, hoten, chieucao, cannang, email, matkhau);
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        return user;
+    }
+
+    public User getUserById(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + DB_TAIKHOAN + " WHERE " + DB_TAIKHOAN_MATK + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(id)});
+
+        User user = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            int matk = cursor.getInt(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_MATK));
+            String hoten = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_HOTEN));
+            float chieucao = cursor.getFloat(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_CHIEUCAO));
+            float cannang = cursor.getFloat(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_CANNANG));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_EMAIL));
+            String matkhau = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_MATKHAU));
+            user = new User(matk, hoten, chieucao, cannang, email, matkhau);
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        return user;
+    }
     // Initial data method
     private void initialData(SQLiteDatabase db) {
         // Insert sample data into TAIKHOAN table
@@ -157,6 +200,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void insertMonHocData(SQLiteDatabase db) {
         // Sample data for MONHOC table
+
         insertMonHoc(db, "Cầu lông", "AnhMonHoc/badminton.png");
         insertMonHoc(db, "Bóng đá", "AnhMonHoc/football.png");
         insertMonHoc(db, "Bóng chuyền", "AnhMonHoc/volleyball.png");
@@ -166,6 +210,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertMonHoc(db, "Bài tập tăng cơ", "AnhMonHoc/TangCo.png");
         insertMonHoc(db, "Bài tập duy trì thể trạng", "AnhMonHoc/running.png");
         insertMonHoc(db, "Fast Warmup", "AnhMonHoc/fastwarmup.png");
+    }
+     public boolean changePassword(int matk, String matkhau){
+         SQLiteDatabase db = this.getWritableDatabase();
+         ContentValues values = new ContentValues();
+         values.put(DB_TAIKHOAN_MATKHAU, matkhau); // cho gía trị mật khẩu mới vào values
+
+         String selection = DB_TAIKHOAN_MATK + " = ?";
+         String[] selectionArgs = { String.valueOf(matk) };
+
+         int count = db.update(
+                 DB_TAIKHOAN, // Tên bảng
+                 values, // Giá trị mới
+                 selection, // Mệnh đề WHERE
+                 selectionArgs); // Giá trị cho mệnh đề WHERE
+         if(count>0)
+             return true;
+         else return false;
+     }
+    public String getTenMonHocByMaMH(int maMH){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT "+DB_MONHOC_TENMH+
+                        " FROM "+DB_MONHOC+
+                        " WHERE "+DB_MONHOC+"."+DB_MONHOC_TENMH+" = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(maMH)});
+        return cursor.getString(cursor.getColumnIndexOrThrow(DB_MONHOC_TENMH));
     }
 
     private void insertBaiTapData(SQLiteDatabase db) {
@@ -318,9 +387,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * " +
                 "FROM BAITAP " +
-                "JOIN MONHOC ON BAITAP.MAMH = MONHOC.MAMH " +
-                "WHERE BAITAP.MAMH = ? AND BAITAP.TRANGTHAI = 'Incomplete'";
+                "WHERE BAITAP.MAMH = ?";
         return db.rawQuery(query, new String[]{String.valueOf(MaMH)});
+    }
+    public Exercise getBaiTapByMaBT(int maBT,int maMH){
+        String query = "";
+        Cursor cursor = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        if(maBT == -1 && maMH != 1){
+            query= query = "SELECT * FROM " + DB_BAITAP + " WHERE " + DB_BAITAP_MAMH + " = ? ORDER BY " + DB_BAITAP_MABT + " ASC LIMIT 1";
+            cursor = db.rawQuery(query, new String[]{String.valueOf(maMH)});
+
+        }else if(maBT !=1){
+            query= "SELECT * FROM BAITAP WHERE BAITAP.MABT = ?";
+            cursor = db.rawQuery(query, new String[]{String.valueOf(maBT)});
+
+        }
+
+        Exercise exercise = null;
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    String img = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_ANHMINHHOA));
+                    String name = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_TENBT));
+                    int category = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_MAMH));
+                    int timerequire = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_THOIGIANYC));
+                    int timereality = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_THOIGIANYC));
+                    String description = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.DB_BAITAP_HUONGDAN));
+                    exercise = new Exercise(img, name, timerequire, category, timereality, description);
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        db.close();
+        return exercise;
     }
     public long signUp(int id, String hoten, float chieucao, float cannang, String email, String matkhau) {
         SQLiteDatabase db = this.getWritableDatabase();

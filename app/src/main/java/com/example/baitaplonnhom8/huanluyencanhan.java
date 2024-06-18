@@ -17,12 +17,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baitaplonnhom8.database.DatabaseHelper;
+import com.example.baitaplonnhom8.database.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
  public class huanluyencanhan extends AppCompatActivity {
         ListView listView;
-        private TextView txtBMI,txtTheTrang;
+        private TextView txtBMI,txtTheTrang,txtNameUser;
         private Button btn_duytri,btn_tangco,btn_giammo;
         private RecyclerView recyclerView,exerciseRecyclerView;
         private ExerciseAdapter exerciseAdapter;
@@ -44,22 +45,22 @@ import java.util.List;
             });
             getWidget();
             databaseHelper = new DatabaseHelper(this);
-
-            exerciseList = new ArrayList<>();
-            exerciseList.add(new Exercise(R.drawable.a, "Leg exercise", "10 mins", "Bài tập giảm mỡ"));
-            exerciseList.add(new Exercise(R.drawable.c, "Push up", "10 mins", "Bài tập giảm mỡ"));
-            exerciseList.add(new Exercise(R.drawable.b, "Pull up", "10 mins", "Bài tập giảm mỡ"));
+            //Lấy thông tin user từ phiên đăng nhập
+            User user = phienDangNhapUser.getUserFromPreferences(this);
+            txtBMI.setText("BMI :"+String.format("%.2f",user.getBMI()));
+            txtTheTrang.setText("Thể trạng : "+user.getCondition());
 
             // Thêm các bài tập khác vào danh sách
-
+            //Thêm dữ liệu các bài tập mục Fast Warmup
             cursor = databaseHelper.getBaiTapByMaMH(9);
             exerciseAdapter = new ExerciseAdapter(this, cursor);
             recyclerView.setAdapter(exerciseAdapter);
-
+            //Thêm dữ liệu mặc định cho chế độ tập luyện
             cursor = databaseHelper.getBaiTapByMaMH(6);
             vecticalAdapter = new vecticalExerciseAdapter(this,cursor);
             exerciseRecyclerView.setAdapter(vecticalAdapter);
 
+            // Xử lý sự kiện cho các nút bấm chọn chế độ tập luyện
             btn_giammo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -96,6 +97,7 @@ import java.util.List;
                 }
             });
 
+            // Xử lý sự kiện cho nút bấm chọn chế độ tập luyện
         }
         public void getWidget(){
             txtBMI = findViewById(R.id.txtBMI);
@@ -105,6 +107,8 @@ import java.util.List;
             btn_tangco = findViewById(R.id.btn_tangco);
             btn_logout = findViewById(R.id.btn_logout);
     //        listView = findViewById(R.id.fast_warmup);
+            txtNameUser = findViewById(R.id.txtNameUser);
+            //        listView = findViewById(R.id.fast_warmup);
             recyclerView = findViewById(R.id.fastWarmup);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             exerciseRecyclerView = findViewById(R.id.exercies);

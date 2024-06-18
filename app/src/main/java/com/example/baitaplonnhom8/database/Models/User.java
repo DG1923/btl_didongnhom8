@@ -16,6 +16,29 @@ public class User {
         this.EMAIL = EMAIL;
         this.MATKHAU = MATKHAU;
     }
+    public float getBMI(){
+        float BMI = (float) (CANNANG/Math.pow(CHIEUCAO/100,2));
+        return BMI;
+    }
+    public String getCondition(){
+        float BMI = getBMI();
+        if(BMI < 18.5){
+            return "Nhẹ cân";
+        }
+        else if(BMI >= 18.5 && BMI <= 24.9) {
+            return "Cân nặng bình thường";
+        }else if(BMI >= 25 && BMI <= 29.9){
+                return "Thừa cân";
+            }else if (BMI >= 30){
+                return "Béo phì độ 1";
+        }else if(BMI >= 35 && BMI <= 39.9){
+                return "Béo phì độ 2";
+        }else{
+                return "Béo phì độ 3";
+        }
+
+
+    }
 
     public int getMATK() {
         return MATK;
