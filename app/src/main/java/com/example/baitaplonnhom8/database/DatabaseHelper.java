@@ -171,7 +171,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private void insertBaiTapData(SQLiteDatabase db) {
         // Insert provided exercise data
         String[] exercises = {
-                // Cầu lông
                 "('Tập Bump', 'AnhBaiTap/Bump Drill.png', 'Luyện tập đỡ cầu. Đứng với đầu gối uốn cong, tay duỗi thẳng. Tập trung sử dụng cẳng tay để điều khiển cầu lên trên.', 30, 0, 'Incomplete', 2)",
                 "('Tập Đập Cầu', 'AnhBaiTap/Bump Drill.png', 'Luyện tập đập cầu. Tiến đến lưới, nhảy lên và đập cầu bằng tay mở, nhắm vào sân đối phương.', 30, 0, 'Incomplete', 2)",
                 "('Tập Phát Cầu', 'AnhBaiTap/Bump Drill.png', 'Luyện tập phát cầu. Đứng sau vạch cuối sân, tung cầu lên không và đập nó bằng tay để phát cầu qua lưới.', 30, 0, 'Incomplete', 2)",
@@ -192,7 +191,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Thảo Luận Chiến Thuật Đội', 'AnhBaiTap/Bump Drill.png', 'Thảo luận và luyện tập chiến thuật đội. Lên kế hoạch các pha bóng và vị trí để tối đa hiệu quả.', 45, 0, 'Incomplete', 2)",
                 "('Tập Sức Bền', 'AnhBaiTap/Bump Drill.png', 'Xây dựng sức bền. Thực hiện các bài tập tim mạch để tăng sức bền cho các trận đấu dài.', 45, 0, 'Incomplete', 2)",
                 "('Hạ Nhiệt', 'AnhBaiTap/Bump Drill.png', 'Hạ nhiệt và kéo giãn sau buổi tập. Thực hiện kéo giãn nhẹ nhàng để giúp phục hồi cơ bắp và tăng linh hoạt.', 20, 0, 'Incomplete', 2)",
-                // Bóng đá
                 "('Tập Dẫn Bóng', 'AnhBaiTap/Footwork Drill.png', 'Luyện tập dẫn bóng. Sử dụng nón để tạo lộ trình, di chuyển bóng bằng cả hai chân, duy trì kiểm soát.', 30, 0, 'Incomplete', 2)",
                 "('Tập Sút Bóng', 'AnhBaiTap/Footwork Drill.png', 'Luyện tập sút bóng. Nhắm vào các mục tiêu khác nhau trong khung thành, tập trung vào độ chính xác và sức mạnh.', 30, 0, 'Incomplete', 2)",
                 "('Tập Chuyền Bóng', 'AnhBaiTap/Footwork Drill.png', 'Luyện tập chuyền bóng. Làm việc với bạn để chuyền ngắn và dài, tập trung vào độ chính xác và thời gian.', 30, 0, 'Incomplete', 2)",
@@ -213,7 +211,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Tập Đánh Đầu', 'AnhBaiTap/Footwork Drill.png', 'Luyện tập đánh đầu. Tập trung vào thời gian, độ chính xác và sức mạnh.', 30, 0, 'Incomplete', 2)",
                 "('Tập Nhanh Nhẹn', 'AnhBaiTap/Footwork Drill.png', 'Cải thiện sự nhanh nhẹn. Thực hiện các bài tập thay đổi hướng nhanh và thang.', 30, 0, 'Incomplete', 2)",
                 "('Hạ Nhiệt', 'AnhBaiTap/Footwork Drill.png', 'Hạ nhiệt và kéo giãn sau buổi tập. Thực hiện kéo giãn nhẹ nhàng để giúp phục hồi cơ bắp và tăng linh hoạt.', 20, 0, 'Incomplete', 2)",
-                // Bóng chuyền
                 "('Chạy Bộ Khởi Động', 'AnhBaiTap/Warm-up Run.png', 'Thực hiện chạy bộ khởi động. Bắt đầu ở tốc độ chậm để từ từ tăng nhịp tim và làm dịu cơ bắp.', 30, 0, 'Incomplete', 3)",
                 "('Chạy Bộ Xa', 'AnhBaiTap/Warm-up Run.png', 'Chạy các khoảng cách dài. Giữ tốc độ ổn định, tập trung vào sức bền và kỹ thuật đúng.', 60, 0, 'Incomplete', 3)",
                 "('Chạy Bộ Các Khoảng Cách Ngắn', 'AnhBaiTap/Warm-up Run.png', 'Thực hiện các khoảng cách chạy nhanh. Thay phiên nhau giữa chạy nhanh trong thời gian ngắn và thời gian phục hồi.', 45, 0, 'Incomplete', 3)",
@@ -234,7 +231,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Chạy Bộ Nhóm', 'AnhBaiTap/Warm-up Run.png', 'Chạy cùng nhóm. Tận hưởng mối quan hệ xã hội và sự động viên từ việc chạy cùng người khác.', 60, 0, 'Incomplete', 3)",
                 "('Tập Luyện Trên Đường Chạy', 'AnhBaiTap/Warm-up Run.png', 'Thực hiện tập luyện trên đường chạy. Thực hiện các khoảng thời gian hoặc lặp lại trên đường chạy để tập trung vào tốc độ và kỹ thuật.', 45, 0, 'Incomplete', 3)",
                 "('Hạ Nhiệt', 'AnhBaiTap/Warm-up Run.png', 'Hạ nhiệt và kéo giãn sau khi chạy. Thực hiện kéo giãn nhẹ nhàng để giúp phục hồi cơ bắp và linh hoạt.', 20, 0, 'Incomplete', 3)",
-                // Tenis
                 "('Tập Luyện Giao Bóng', 'AnhBaiTap/Drop Shot Drill.png', 'Tập luyện giao bóng. Tập trung vào độ chính xác và sự nhất quán, nhắm vào các vùng khác nhau của sân đối thủ.', 30, 0, 'Incomplete', 4)",
                 "('Tập Luyện Đánh Phá Lưới', 'AnhBaiTap/Drop Shot Drill.png', 'Tập luyện đánh phá lưới. Luyện tập thời điểm và sức mạnh để đánh cầu xuống mạnh vào sân đối thủ.', 30, 0, 'Incomplete', 4)",
                 "('Tập Luyện Động Tác Chân', 'AnhBaiTap/Drop Shot Drill.png', 'Tập luyện động tác chân. Di chuyển hiệu quả xung quanh sân, duy trì sự cân bằng và kiểm soát.', 30, 0, 'Incomplete', 4)",
@@ -255,7 +251,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Tập Luyện Trả Giao Bóng', 'AnhBaiTap/Drop Shot Drill.png', 'Tập luyện trả giao bóng. Tập trung vào độ chính xác và kiểm soát để có lợi thế sau khi đối thủ giao bóng.', 30, 0, 'Incomplete', 4)",
                 "('Hạ Nhiệt', 'AnhBaiTap/Drop Shot Drill.png', 'Hạ nhiệt và kéo giãn sau khi tập luyện. Thực hiện kéo giãn nhẹ nhàng để giúp phục hồi cơ bắp và linh hoạt.', 20, 0, 'Incomplete', 4)",
                 "('Tập Luyện Tinh Thần', 'AnhBaiTap/Drop Shot Drill.png', 'Luyện tập sự bền bỉ tinh thần. Thực hành kỹ thuật tập trung và chiến lược để duy trì bình tĩnh dưới áp lực.', 30, 0, 'Incomplete', 4)",
-                // Aerobic
                 "('Gập bụng', 'AnhBaiTap/Push-ups.png', 'Thực hiện động tác gập bụng. Giữ cơ thể thẳng, hạ ngực xuống đất và đẩy lên lại.', 30, 0, 'Incomplete', 5)",
                 "('Nâng tạ', 'AnhBaiTap/Push-ups.png', 'Tập nâng tạ. Tập trung vào các nhóm cơ chính như tạ đạp ngực, nâng tạ chết và chân gậy.', 45, 0, 'Incomplete', 5)",
                 "('Kéo thẳng', 'AnhBaiTap/Push-ups.png', 'Thực hiện kéo thẳng. Treo trên thanh, kéo cằm lên trên thanh và hạ xuống.', 30, 0, 'Incomplete', 5)",
@@ -274,7 +269,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Đạp bộ', 'AnhBaiTap/Push-ups.png', 'Thực hiện đạp bộ. Hạ cơ thể bằng cách cong khuỷu tay, giữ lưng thẳng và đứng trở lại.', 30, 0, 'Incomplete', 5)",
                 "('Nghỉ ngơi', 'AnhBaiTap/Push-ups.png', 'Nghỉ ngơi và kéo dãn sau khi nâng tạ. Thực hiện kéo dãn nhẹ để giúp cơ bắp phục hồi và linh hoạt.', 20, 0, 'Incomplete', 5)",
                 "('Cuộn cuộn', 'AnhBaiTap/Push-ups.png', 'Sử dụng cuộn cuộn. Cuộn qua các nhóm cơ chính để giải phóng căng thẳng và hỗ trợ phục hồi.', 30, 0, 'Incomplete', 5)",
-                // Giảm mỡ
                 "('Cardio', 'AnhBaiTap/Cardio.png', 'Thực hiện các bài tập cardio. Tham gia vào các hoạt động như chạy, đạp xe, hoặc bơi lội để tăng nhịp tim và đốt cháy calo.', 45, 0, 'Incomplete', 6)",
                 "('HIIT', 'AnhBaiTap/HIIT.png', 'Thực hiện các bài tập cường độ cao ngắt quãng. Xen kẽ giữa các đợt tập luyện cường độ cao ngắn và các khoảng thời gian phục hồi.', 30, 0, 'Incomplete', 6)",
                 "('Cycling', 'AnhBaiTap/Cycling.png', 'Đi xe đạp. Đạp xe ngoài trời hoặc sử dụng xe đạp tập để cải thiện sức khỏe tim mạch và đốt cháy chất béo.', 60, 0, 'Incomplete', 6)",
@@ -283,7 +277,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Swimming', 'AnhBaiTap/Swimming.png', 'Bơi lội. Tham gia vào các kiểu bơi khác nhau để làm việc các nhóm cơ khác nhau và cải thiện sức khỏe tim mạch.', 45, 0, 'Incomplete', 6)",
                 "('Rowing', 'AnhBaiTap/Rowing.png', 'Sử dụng máy chèo thuyền. Thực hiện các động tác chèo liên tục, tập trung vào việc tham gia toàn thân và tăng cường độ.', 45, 0, 'Incomplete', 6)",
                 "('Stair Climbing', 'AnhBaiTap/Stair Climbing.png', 'Leo cầu thang. Sử dụng máy leo cầu thang hoặc leo cầu thang thực tế để tăng nhịp tim và làm việc các cơ phần dưới cơ thể.', 30, 0, 'Incomplete', 6)",
-                // Tăng cơ
                 "('Bench Press', 'AnhBaiTap/Bench Press.png', 'Thực hiện yoga. Thực hiện theo một bài tập yoga để cải thiện sự linh hoạt, cân bằng và thư giãn tinh thần.', 45, 0, 'Incomplete', 7)",
                 "('Dumbbell Pullover', 'AnhBaiTap/Dumbbell Pullover.png', 'Thực hiện các bài tập kéo căng. Tập trung vào các nhóm cơ chính để cải thiện phạm vi chuyển động và ngăn ngừa chấn thương.', 30, 0, 'Incomplete', 7)",
                 "('Bent Over Barbell Row', 'AnhBaiTap/Bent Over Barbell Row.png', 'Chạy bộ nhẹ nhàng. Duy trì tốc độ chậm, ổn định để giữ cho cơ thể hoạt động mà không quá sức.', 30, 0, 'Incomplete', 7)",
@@ -293,7 +286,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Seated Dumbbell Shoulder Press', 'AnhBaiTap/Seated Dumbbell Shoulder Press.png', 'Thực hành thiền. Tập trung vào kỹ thuật thở và thư giãn để cải thiện sự rõ ràng tinh thần và giảm căng thẳng.', 30, 0, 'Incomplete', 7)",
                 "('Upright Row','AnhBaiTap/Upright Row.png', 'Thực hiện các bài tập cân bằng. Tập trung vào sự ổn định và phối hợp để duy trì sức khỏe thể chất.', 30, 0, 'Incomplete', 7)",
                 "('Dip', 'AnhBaiTap/Dip.png', 'Thực hiện các bài tập cơ. Thực hiện các động tác như plank và crunches để tăng cường cơ bắp cốt lõi.', 30, 0, 'Incomplete', 7)",
-                // Duy trì
                 "('Push-ups', 'AnhBaiTap/PushUps.png', 'Thực hiện chống đẩy để tăng cường cơ ngực, vai và cơ tam đầu. Giữ một đường thẳng từ đầu đến gót chân.', 30, 0, 'Incomplete', 8)",
                 "('Squats', 'AnhBaiTap/Squats.png', 'Thực hiện squat để làm việc các cơ phần dưới cơ thể, bao gồm cơ đùi, cơ hamstrings và cơ mông. Giữ lưng thẳng.', 40, 0, 'Incomplete', 8)",
                 "('Plank', 'AnhBaiTap/Plank.png', 'Giữ tư thế plank để tăng cường cơ cốt lõi. Đảm bảo cơ thể của bạn tạo thành một đường thẳng từ đầu đến gót chân.', 60, 0, 'Incomplete', 8)",
@@ -304,7 +296,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "('Leg Raises', 'AnhBaiTap/LegRaises.png', 'Thực hiện leg raises để tăng cường cơ bụng dưới. Nâng chân lên khỏi mặt đất trong khi giữ chúng thẳng.', 40, 0, 'Incomplete', 8)",
                 "('Jumping Jacks', 'AnhBaiTap/JumpingJacks.png', 'Thực hiện jumping jacks để tăng nhịp tim và làm việc toàn thân. Nhảy trong khi mở rộng cánh tay và chân.', 20, 0, 'Incomplete', 8)",
                 "('Side Plank', 'AnhBaiTap/SidePlank.png', 'Giữ tư thế side plank để làm việc cơ chéo và cải thiện sự ổn định cốt lõi. Giữ cơ thể trong một đường thẳng.', 50, 0, 'Incomplete', 8)",
-                // Fast warmup
                 "('T-ROTATIONS', 'AnhBaiTap/T-ROTATIONS.png', 'Hướng dẫn thực hiện bài tập T-ROTATIONS -OR- SPIDERMAN LUNGES', 5, 0, 'Incomplete', 9)",
                 "('WALKING KNEE HUGS', 'AnhBaiTap/WALKING KNEE HUGS.png', 'Hướng dẫn thực hiện bài tập SUPINE -OR- WALKING KNEE HUGS', 5, 0, 'Incomplete', 9)",
                 "('STEP JACK -OR- JUMPING JACK', 'AnhBaiTap/stepjack.png', 'Hướng dẫn thực hiện bài tập STEP JACK -OR- JUMPING JACK', 5, 0, 'Incomplete', 9)",
