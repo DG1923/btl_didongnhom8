@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn_luyentapcanhan;
     RecyclerView recyclerView;
+    Button btn_logout;
     DatabaseHelper databaseHelper;
     SubjectAdapter subjectAdapter;
 
@@ -42,7 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         // Initialize DatabaseHelper
         databaseHelper = new DatabaseHelper(this);
 
@@ -58,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
     private void getWidget() {
         btn_luyentapcanhan = findViewById(R.id.btn_trynow);
         recyclerView = findViewById(R.id.listview);
+        btn_logout = findViewById(R.id.btn_logout);
+
     }
 
     private Cursor getAllSubjects() {
