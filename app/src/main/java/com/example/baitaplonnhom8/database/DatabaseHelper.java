@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.example.baitaplonnhom8.Exercise;
 import com.example.baitaplonnhom8.database.Models.Task;
+import com.example.baitaplonnhom8.database.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,7 +125,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DB_TAIKHOAN);
         onCreate(db);
     }
+    public User getUserByEmail(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + DB_TAIKHOAN + " WHERE " + DB_TAIKHOAN_MATK + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(email)});
 
+        User user = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            int matk = cursor.getInt(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_MATK));
+            String hoten = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_HOTEN));
+            float chieucao = cursor.getFloat(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_CHIEUCAO));
+            float cannang = cursor.getFloat(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_CANNANG));
+            String matkhau = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_MATKHAU));
+            user = new User(matk, hoten, chieucao, cannang, email, matkhau);
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        return user;
+    }
+
+    public User getUserById(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + DB_TAIKHOAN + " WHERE " + DB_TAIKHOAN_MATK + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(id)});
+
+        User user = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            int matk = cursor.getInt(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_MATK));
+            String hoten = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_HOTEN));
+            float chieucao = cursor.getFloat(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_CHIEUCAO));
+            float cannang = cursor.getFloat(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_CANNANG));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_EMAIL));
+            String matkhau = cursor.getString(cursor.getColumnIndexOrThrow(DB_TAIKHOAN_MATKHAU));
+            user = new User(matk, hoten, chieucao, cannang, email, matkhau);
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        return user;
+    }
     // Initial data method
     private void initialData(SQLiteDatabase db) {
         // Insert sample data into TAIKHOAN table

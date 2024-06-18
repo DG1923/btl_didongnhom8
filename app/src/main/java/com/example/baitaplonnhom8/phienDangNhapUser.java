@@ -21,6 +21,20 @@ public class phienDangNhapUser {
         editor.putFloat("CANNANG", (float) Float.valueOf(String.valueOf(CANNANG)));
         editor.putString("EMAIL", EMAIL);
         editor.putString("MATKHAU", MATKHAU);
+        editor.apply();  // Lưu thay đổi
+
+    }
+    public static void saveUserToPreferences(Context context,User user){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("phienDangNhapUser", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("MATK", user.getMATK());
+        editor.putString("USERNAME", user.getHOTEN());
+        editor.putFloat("CHIEUCAO", user.getCHIEUCAO());
+        editor.putFloat("CANNANG", user.getCANNANG());
+        editor.putString("EMAIL", user.getEMAIL());
+        editor.putString("MATKHAU", user.getMATKHAU());
+        editor.apply();  // Lưu thay đổi
+
     }
     public static User getUserFromPreferences(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences("phienDangNhapUser", Context.MODE_PRIVATE);
